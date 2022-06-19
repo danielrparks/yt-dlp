@@ -2283,6 +2283,15 @@ class YoutubeDL:
             if t.get('width') and t.get('height'):
                 t['resolution'] = '%dx%d' % (t['width'], t['height'])
             t['url'] = sanitize_url(t['url'])
+        # move user-selected thumbnail to the end of the list if applicable
+        thumb_idx = self.params.get('thumbnail_id', None)
+        if thumb_idx is not None:
+            try:
+                id_thumb = next(filter(lambda t: t.get('id') == thumb_idx, thumbnails))
+                thumbnails.remove(id_thumb)
+                thumbnails.append(id_thumb)
+            except StopIteration:
+                self.report_warning('Thumbnail id not found, using default thumbnail')
 
         if self.params.get('check_formats') is True:
             info_dict['thumbnails'] = LazyList(check_thumbnails(thumbnails[::-1]), reverse=True)

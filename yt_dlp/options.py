@@ -1440,6 +1440,10 @@ def create_parser():
         '--prefer-thumbnail',
         dest='prefer_thumbnail', default=None, metavar='DIMS_LIST',
         help='Takes a comma-separated list of <X>x<Y> thumbnail resolutions, in decreasing order of preference, to be prioritized when fetching thumbnails')
+    thumbnail.add_option(
+        '--thumbnail-id',
+        dest='thumbnail_id', default=None, metavar='ID',
+        help='ID of the thumbnail to use when a thumbnail is required. Note that --prefer-thumbnail changes thumbnail IDs')
 
     link = optparse.OptionGroup(parser, 'Internet Shortcut Options')
     link.add_option(

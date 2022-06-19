@@ -786,6 +786,7 @@ def parse_options(argv=None):
         'writethumbnail': opts.writethumbnail is True,
         'write_all_thumbnails': opts.writethumbnail == 'all',
         'prefer_thumbnail': prefer_thumbnail,
+        'thumbnail_id': opts.thumbnail_id,
         'writelink': opts.writelink,
         'writeurllink': opts.writeurllink,
         'writewebloclink': opts.writewebloclink,

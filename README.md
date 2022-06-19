@@ -732,6 +732,9 @@ You can also fork the project on github and run your fork's [build workflow](.gi
                                     thumbnail resolutions, in decreasing order of
                                     preference, to be prioritized when fetching
                                     thumbnails
+    --thumbnail-id                  ID of the thumbnail to use when a thumbnail is
+                                    required. Note that --prefer-thumbnail changes
+                                    thumbnail IDs.
 
 ## Internet Shortcut Options:
     --write-link                    Write an internet shortcut file, depending
