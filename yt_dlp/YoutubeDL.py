@@ -2241,7 +2241,16 @@ class YoutubeDL:
         return pr.get_header('Cookie')
 
     def _sort_thumbnails(self, thumbnails):
+        def index_or_negative(list, item):
+            try:
+                return list.index(item)
+            # also return negative if list is None
+            except (ValueError, AttributeError):
+                return -1
+
+        thumbnails_preference = self.params.get("prefer_thumbnail", None)
         thumbnails.sort(key=lambda t: (
+            index_or_negative(thumbnails_preference, (t.get('width'), t.get('height'))),
             t.get('preference') if t.get('preference') is not None else -1,
             t.get('width') if t.get('width') is not None else -1,
             t.get('height') if t.get('height') is not None else -1,

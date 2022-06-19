@@ -1436,6 +1436,10 @@ def create_parser():
         '--list-thumbnails',
         action='store_true', dest='list_thumbnails', default=False,
         help='List available thumbnails of each video. Simulate unless --no-simulate is used')
+    thumbnail.add_option(
+        '--prefer-thumbnail',
+        dest='prefer_thumbnail', default=None, metavar='DIMS_LIST',
+        help='Takes a comma-separated list of <X>x<Y> thumbnail resolutions, in decreasing order of preference, to be prioritized when fetching thumbnails')
 
     link = optparse.OptionGroup(parser, 'Internet Shortcut Options')
     link.add_option(

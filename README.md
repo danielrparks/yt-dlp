@@ -728,6 +728,10 @@ You can also fork the project on github and run your fork's [build workflow](.gi
     --write-all-thumbnails          Write all thumbnail image formats to disk
     --list-thumbnails               List available thumbnails of each video.
                                     Simulate unless --no-simulate is used
+    --prefer-thumbnail DIMS_LIST    Takes a comma-separated list of <X>x<Y>
+                                    thumbnail resolutions, in decreasing order of
+                                    preference, to be prioritized when fetching
+                                    thumbnails
 
 ## Internet Shortcut Options:
     --write-link                    Write an internet shortcut file, depending

@@ -690,6 +690,16 @@ def parse_options(argv=None):
         else opts.audioformat if (opts.extractaudio and opts.audioformat in FFmpegExtractAudioPP.SUPPORTED_EXTS)
         else None)
 
+    prefer_thumbnail = None
+    if opts.prefer_thumbnail:
+        try:
+            prefer_thumbnail = list(map(
+                lambda p: tuple(map(int, p.split('x'))),
+                opts.prefer_thumbnail.split(',')))
+            prefer_thumbnail.reverse()
+        except ValueError as err:
+            parser.error(f'{err}\n')
+
     return parser, opts, urls, {
         'usenetrc': opts.usenetrc,
         'netrc_location': opts.netrc_location,
@@ -775,6 +785,7 @@ def parse_options(argv=None):
         'getcomments': opts.getcomments,
         'writethumbnail': opts.writethumbnail is True,
         'write_all_thumbnails': opts.writethumbnail == 'all',
+        'prefer_thumbnail': prefer_thumbnail,
         'writelink': opts.writelink,
         'writeurllink': opts.writeurllink,
         'writewebloclink': opts.writewebloclink,
